@@ -44,9 +44,7 @@ This accounts for skewness and allows coefficients to be interpreted in percenta
 
 The initial model estimates:
 
-\[
-\log(\text{attendance}) = \beta_0 + \beta_1 \cdot \text{max\_pre\_streak} + \epsilon
-\]
+log(attendance) = β₀ + β₁ · max_pre_streak + ε
 
 Where:
 - Dependent variable: log attendance  
