@@ -1,0 +1,4 @@
+model_label,formula,n,r_squared,coef_max_pre_streak,se_max_pre_streak,p_value_max_pre_streak
+Model 1,log_attendance ~ max_pre_streak,4643,0.02,0.04,0.004,1.0224529088555677e-28
+Model 2,log_attendance ~ max_pre_streak + is_finals + margin + C(season),4643,0.346,0.028,0.003,1.2260238176777272e-17
+Model 3,log_attendance ~ max_pre_streak + is_finals + margin + C(season) + C(venue),4643,0.734,0.027,0.002,1.2463299155545236e-41

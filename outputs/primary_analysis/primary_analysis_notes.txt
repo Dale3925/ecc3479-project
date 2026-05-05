@@ -1,0 +1,4 @@
+Primary analysis notes:
+Model 1: max_pre_streak coefficient = 0.040 (SE = 0.004, p = 0.000).
+Model 2: max_pre_streak coefficient = 0.028 (SE = 0.003, p = 0.000).
+Model 3: max_pre_streak coefficient = 0.027 (SE = 0.002, p = 0.000).
