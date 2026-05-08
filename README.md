@@ -25,16 +25,19 @@ ecc3479-project/
 │   ├── build_streaks.py
 │   ├── eda.py
 │   ├── primary_analysis.py
+│   ├── robustness_analysis.py
 │   ├── analysis.py
 │   └── analysis_checks.py
 ├── notebooks/
 │   └── eda_afl_attendance.ipynb
 ├── docs/
 │   ├── eda_report.md
-│   └── primary_analysis_report.md
+│   ├── primary_analysis_report.md
+│   └── robustness_report.md
 ├── outputs/
 │   ├── eda/
-│   └── primary_analysis/
+│   ├── primary_analysis/
+│   └── robustness/
 ├── requirements.txt
 └── README.md
 
@@ -79,6 +82,7 @@ python src/collect_afl_data.py
 python src/build_streaks.py
 python src/eda.py
 python src/primary_analysis.py
+python src/robustness_analysis.py
 
 Optional sanity checks can also be run with:
 
@@ -95,6 +99,7 @@ Raw dataset: data/raw/afl_matches_raw.csv
 Clean dataset: data/clean/afl_matches_with_streaks.csv
 EDA outputs: outputs/eda/
 Primary analysis outputs: outputs/primary_analysis/
+Robustness analysis outputs: outputs/robustness/
 EDA deliverable
 Written EDA discussion: docs/eda_report.md
 Reproducible EDA code: src/eda.py
@@ -104,6 +109,11 @@ Primary analysis deliverable
 Primary analysis code: src/primary_analysis.py
 Written primary analysis discussion: docs/primary_analysis_report.md
 Regression tables, summaries, and figures: outputs/primary_analysis/
+
+Robustness analysis deliverable
+Robustness analysis code: src/robustness_analysis.py
+Written robustness discussion: docs/robustness_report.md
+Robustness tables, summaries, notes, and figures: outputs/robustness/
 
 This primary analysis is descriptive rather than causal and estimates conditional associations between pre-match winning streaks and AFL match attendance.
 

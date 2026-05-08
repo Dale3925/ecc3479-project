@@ -1,0 +1,9 @@
+model_label,formula,n,r_squared,coef_max_pre_streak,se_max_pre_streak,p_value_max_pre_streak
+Main spec,log_attendance ~ max_pre_streak + is_finals + margin + C(season) + C(venue),4643,0.734,0.027395706503595425,0.0020268034955003037,1.2463299155545236e-41
+No controls,log_attendance ~ max_pre_streak,4643,0.02,0.04033261542970668,0.0036276010108165454,1.0224529088555677e-28
+Season only,log_attendance ~ max_pre_streak + is_finals + margin + C(season),4643,0.346,0.027888684304714726,0.003261660185197332,1.2260238176777272e-17
+Regular season,log_attendance ~ max_pre_streak + is_finals + margin + C(season) + C(venue),4427,0.728,0.02792266224648015,0.0021266592443559547,2.2217137126169214e-39
+Exclude COVID,log_attendance ~ max_pre_streak + is_finals + margin + C(season) + C(venue),4340,0.675,0.024021362252140716,0.0018795084539141662,2.102721393508538e-37
+Levels,attendance ~ max_pre_streak + is_finals + margin + C(season) + C(venue),4643,0.604,875.990223664841,77.91884839422389,2.5259525478470026e-29
+Quadratic,log_attendance ~ max_pre_streak + max_pre_streak_sq + is_finals + margin + C(season) + C(venue),4643,0.735,0.04193111679365672,0.004507788576152278,1.379239535331412e-20
+Clustered,log_attendance ~ max_pre_streak + is_finals + margin + C(season) + C(venue),4643,0.734,0.027395706503595425,0.0031937567081334432,9.662592999830062e-18
