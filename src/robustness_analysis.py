@@ -252,6 +252,41 @@ def build_compact_robustness_table(models: dict[str, dict]) -> pd.DataFrame:
             row5.append('—')
     df.loc[5] = row5
     
+    # row 6: Outcome
+    row6 = ['Outcome']
+    for label in labels:
+        row6.append(OUTCOME_LABELS.get(label, '—'))
+    df.loc[6] = row6
+    
+    # row 7: Controls
+    row7 = ['Controls']
+    for label in labels:
+        controls = []
+        if 'is_finals' in MODEL_SPECS[label]:
+            controls.append('Finals')
+        if 'margin' in MODEL_SPECS[label]:
+            controls.append('Margin')
+        if 'C(season)' in MODEL_SPECS[label]:
+            controls.append('Season FE')
+        if 'C(venue)' in MODEL_SPECS[label]:
+            controls.append('Venue FE')
+        if 'max_pre_streak_sq' in MODEL_SPECS[label]:
+            controls.append('Quadratic')
+        row7.append(', '.join(controls) if controls else 'None')
+    df.loc[7] = row7
+    
+    # row 8: Sample
+    row8 = ['Sample']
+    for label in labels:
+        row8.append(SAMPLE_DESCRIPTIONS.get(label, '—'))
+    df.loc[8] = row8
+    
+    # row 9: SE type
+    row9 = ['SE type']
+    for label in labels:
+        row9.append(SE_TYPES.get(label, '—'))
+    df.loc[9] = row9
+    
     return df
 
 
@@ -466,8 +501,8 @@ def main() -> None:
 
     regression_table = build_compact_robustness_table(models)
     regression_table.to_csv(out_dir / "robustness_table.csv", index=False)
-    notes = """**Notes:** Standard errors in parentheses. Column (1) is the preferred specification with finals status, margin, season fixed effects, and venue fixed effects. Column (2) includes no controls. Column (3) includes finals status, margin, and season fixed effects, but no venue fixed effects. Column (4) restricts the sample to regular-season matches only. Column (5) excludes seasons 2020 and 2021. Column (6) uses attendance in levels rather than log attendance. Column (7) adds a quadratic streak term. Column (8) re-estimates the preferred specification with standard errors clustered by venue. All columns use the full sample unless otherwise noted."""
-    write_markdown_table_with_notes(regression_table, notes, out_dir / "robustness_table.md")
+    notes_str = """**Notes:** Standard errors in parentheses. Column (1) is the preferred specification with finals status, margin, season fixed effects, and venue fixed effects. Column (2) includes no controls. Column (3) includes finals status, margin, and season fixed effects, but no venue fixed effects. Column (4) restricts the sample to regular-season matches only. Column (5) excludes seasons 2020 and 2021. Column (6) uses attendance in levels rather than log attendance. Column (7) adds a quadratic streak term. Column (8) re-estimates the preferred specification with standard errors clustered by venue. All columns use the full sample unless otherwise noted."""
+    write_markdown_table_with_notes(regression_table, notes_str, out_dir / "robustness_table.md")
 
     notes_text = capture_notes(models, notes)
     pd.DataFrame(summary_rows).to_csv(out_dir / "robustness_model_summary.csv", index=False)
