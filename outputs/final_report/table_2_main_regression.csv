@@ -1,0 +1,9 @@
+Variable / specification,Model 1,Model 2,Model 3
+max_pre_streak,0.040,0.028,0.027
+,(0.004),(0.003),(0.002)
+Finals control,No,Yes,Yes
+Margin control,No,Yes,Yes
+Season FE,No,Yes,Yes
+Venue FE,No,No,Yes
+N,"4,643","4,643","4,643"
+R-squared,0.020,0.346,0.734

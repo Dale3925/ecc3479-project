@@ -41,7 +41,11 @@ ecc3479-project/
 ├── outputs/
 │   ├── eda/
 │   ├── primary_analysis/
-│   └── robustness/
+│   ├── robustness/
+│   └── final_report/
+├── reports/
+│   ├── final_report.md
+│   └── final_report.pdf
 ├── requirements.txt
 └── README.md
 ```
@@ -59,6 +63,7 @@ ecc3479-project/
 - `src/eda.py`: Runs the exploratory data analysis and saves figures/tables to `outputs/eda/`
 - `src/primary_analysis.py`: Runs the primary econometric analysis and saves outputs to `outputs/primary_analysis/`
 - `src/robustness_analysis.py`: Runs the robustness checks and saves outputs to `outputs/robustness/`
+- `src/final_report_outputs.py`: Produces final-report-ready versions of Tables 1–3 in `outputs/final_report/`
 - `src/analysis.py`: Earlier analysis script retained in the repository
 - `src/analysis_checks.py`: Optional sanity checks
 
@@ -101,6 +106,7 @@ python src/build_streaks.py
 python src/eda.py
 python src/primary_analysis.py
 python src/robustness_analysis.py
+python src/final_report_outputs.py
 ```
 
 ### 4. Optional checks
@@ -110,6 +116,16 @@ Optional sanity checks can also be run with:
 ```
 python src/analysis_checks.py
 ```
+
+## Final report replication map
+
+| PDF item | Final report output | Source output | Producing script |
+|---|---|---|---|
+| Final PDF report | reports/final_report.pdf | reports/final_report.md | PDF conversion from reports/final_report.md |
+| Table 1: Summary statistics | outputs/final_report/table_1_summary_statistics.md | data/clean/afl_matches_with_streaks.csv | src/final_report_outputs.py |
+| Figure 1: Log attendance and winning streak | outputs/eda/exhibit_9_log_attendance_vs_streak.png | data/clean/afl_matches_with_streaks.csv | src/eda.py |
+| Table 2: Main regression results | outputs/final_report/table_2_main_regression.md | outputs/primary_analysis/regression_table_main.md | src/primary_analysis.py and src/final_report_outputs.py |
+| Table 3: Robustness checks | outputs/final_report/table_3_robustness_checks.md | outputs/robustness/robustness_table.md | src/robustness_analysis.py and src/final_report_outputs.py |
 
 ## Manual steps outside the code
 
@@ -124,6 +140,7 @@ After running the pipeline, the main outputs are:
 - EDA outputs: `outputs/eda/`
 - Primary analysis outputs: `outputs/primary_analysis/`
 - Robustness analysis outputs: `outputs/robustness/`
+- Final report tables: `outputs/final_report/`
 
 ## EDA deliverable
 
